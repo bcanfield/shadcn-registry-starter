@@ -1,12 +1,11 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  name: "Shadcn Registry Starter",
+  url: "https://shadcn-registry-starter.vercel.app",
+  ogImage: "https://shadcn-registry-starter.vercel.app/og.jpg",
   description:
-    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+    "Template for creating a custom shadcn component registry",
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn-ui/ui",
+    github: "https://github.com/bcanfield/shadcn-registry-starter",
   },
 }
 

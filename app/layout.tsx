@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "shadcn",
-      url: "https://shadcn.com",
+      name: "bcanfield",
+      url: "https://shadcn-registry-starter.vercel.app/",
     },
   ],
-  creator: "shadcn",
+  creator: "bcanfield",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -54,7 +54,6 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@shadcn",
   },
   icons: {
     icon: "/favicon.ico",
