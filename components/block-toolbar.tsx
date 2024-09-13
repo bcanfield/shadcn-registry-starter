@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockCopyButton } from "@/components/block-copy-button"
 // import { StyleSwitcher } from "@/components/style-switcher"
-import { V0Button } from "@/components/v0-button"
 import { Badge } from "@/registry/ui/badge"
 import { Label } from "@/registry/ui/label"
 import {
@@ -181,18 +180,7 @@ export function BlockToolbar({
             code={block.code}
             disabled={isLiftMode}
           />
-          <V0Button
-            className="hidden md:flex"
-            id={`v0-button-${block.name}`}
-            disabled={
-              isLiftMode || ["login-01", "sidebar-01"].includes(block.name)
-            }
-            block={{
-              name: block.name,
-              description: block.description || "Edit in v0",
-              code: block.code,
-            }}
-          />
+       
         </div>
       )}
     </div>
