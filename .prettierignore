@@ -3,5 +3,5 @@ node_modules
 .next
 build
 .contentlayer
-apps/www/pages/api/registry.json
-**/fixtures
+__registry__/index.tsx
+app/examples/mail/components/mail.tsx
