@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { Announcement } from "@/components/announcement"
 import {
   PageActions,
   PageHeader,
@@ -23,7 +22,6 @@ export default function ChartsLayout({
   return (
     <div className="container relative">
       <PageHeader>
-        <Announcement />
         <PageHeaderHeading>Tailwind Colors</PageHeaderHeading>
         <PageHeaderDescription>
           Tailwind CSS colors in HSL, RGB, and HEX formats.

@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 
-import { Announcement } from "@/components/announcement"
 import {
   PageActions,
   PageHeader,
@@ -23,7 +22,6 @@ export default function BlocksLayout({
   return (
     <div className="container relative">
       <PageHeader>
-        <Announcement />
         <PageHeaderHeading>Building Blocks for the Web</PageHeaderHeading>
         <PageHeaderDescription>
           Beautifully designed. Copy and paste into your apps. Open Source.
