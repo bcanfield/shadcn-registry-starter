@@ -51,20 +51,19 @@ export function MainNav() {
         >
           Blocks
         </Link>
-  
- 
-     
         <Link
-          href="/colors"
+          href="/themes"
           className={cn(
             "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/colors")
+            pathname?.startsWith("/themes")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Colors
+          Themes
         </Link>
+ 
+    
       </nav>
     </div>
   )

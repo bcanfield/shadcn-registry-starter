@@ -73,7 +73,7 @@ export default function NavigationMenuDemo() {
                       {siteConfig.name}
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                    {siteConfig.description}
+                      {siteConfig.description}
                     </p>
                   </a>
                 </NavigationMenuLink>
