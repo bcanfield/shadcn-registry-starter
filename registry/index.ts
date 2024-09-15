@@ -10,8 +10,8 @@ import { Registry } from "@/registry/schema";
 export const registry: Registry = [
   ...ui,
   ...examples,
-  ...blocks,
-  ...charts,
+  // ...blocks,
+  // ...charts,
   ...lib,
   ...hooks,
   ...themes,
