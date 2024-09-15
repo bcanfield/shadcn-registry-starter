@@ -7,6 +7,7 @@ import { CssVars, Theme, useConfig } from "@/hooks/use-config";
 import { CustomThemeWrapper } from "./custom-theme-wrapper";
 import { useMemo } from "react";
 import { ThemesSwitcher } from "./themes-selector";
+import { ThemeWrapper } from "./theme-wrapper";
 
 export default function ThemePicker() {
   const { setTheme: setMode, resolvedTheme: mode } = useTheme();

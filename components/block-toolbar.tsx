@@ -1,38 +1,30 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
-import { ImperativePanelHandle } from "react-resizable-panels"
+import * as React from "react";
+import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react";
+import { ImperativePanelHandle } from "react-resizable-panels";
 
-import { trackEvent } from "@/lib/events"
-import { cn } from "@/lib/utils"
-import { useLiftMode } from "@/hooks/use-lift-mode"
-import { BlockCopyButton } from "@/components/block-copy-button"
+import { cn } from "@/lib/utils";
+import { useLiftMode } from "@/hooks/use-lift-mode";
+import { BlockCopyButton } from "@/components/block-copy-button";
 // import { StyleSwitcher } from "@/components/style-switcher"
-import { Badge } from "@/registry/ui/badge"
-import { Label } from "@/registry/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/ui/popover"
-import { Separator } from "@/registry/ui/separator"
-import { Switch } from "@/registry/ui/switch"
-import { TabsList, TabsTrigger } from "@/registry/ui/tabs"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/ui/toggle-group"
-import { Block } from "@/registry/schema"
+import { Badge } from "@/registry/ui/badge";
+import { Label } from "@/registry/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover";
+import { Separator } from "@/registry/ui/separator";
+import { Switch } from "@/registry/ui/switch";
+import { TabsList, TabsTrigger } from "@/registry/ui/tabs";
+import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group";
+import { Block } from "@/registry/schema";
 
 export function BlockToolbar({
   block,
   resizablePanelRef,
 }: {
-  block: Block & { hasLiftMode: boolean }
-  resizablePanelRef: React.RefObject<ImperativePanelHandle>
+  block: Block & { hasLiftMode: boolean };
+  resizablePanelRef: React.RefObject<ImperativePanelHandle>;
 }) {
-  const { isLiftMode, toggleLiftMode } = useLiftMode(block.name)
+  const { isLiftMode, toggleLiftMode } = useLiftMode(block.name);
 
   return (
     <div className="flex items-center gap-4">
@@ -119,17 +111,8 @@ export function BlockToolbar({
                   id={`lift-mode-${block.name}`}
                   checked={isLiftMode}
                   onCheckedChange={(value) => {
-                    resizablePanelRef.current?.resize(100)
-                    toggleLiftMode(block.name)
-
-                    if (value) {
-                      trackEvent({
-                        name: "enable_lift_mode",
-                        properties: {
-                          name: block.name,
-                        },
-                      })
-                    }
+                    resizablePanelRef.current?.resize(100);
+                    toggleLiftMode(block.name);
                   }}
                 />
               </div>
@@ -146,7 +129,7 @@ export function BlockToolbar({
               defaultValue="100"
               onValueChange={(value) => {
                 if (resizablePanelRef.current) {
-                  resizablePanelRef.current.resize(parseInt(value))
+                  resizablePanelRef.current.resize(parseInt(value));
                 }
               }}
             >
@@ -180,9 +163,8 @@ export function BlockToolbar({
             code={block.code}
             disabled={isLiftMode}
           />
-       
         </div>
       )}
     </div>
-  )
+  );
 }
