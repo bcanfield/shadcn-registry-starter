@@ -17,10 +17,7 @@ export const metadata: Metadata = {
 
 export default function ThemesPage() {
   return (
-    <div className="container">
-      <div className="flex flex-row items-center">
-        <ThemePicker />
-      </div>
+    <div className="container flex flex-col gap-4">
       <ThemeWrapper
         defaultTheme="zinc"
         className="relative flex w-full flex-col items-start md:flex-row"
@@ -37,6 +34,8 @@ export default function ThemesPage() {
           </PageHeaderDescription>
         </PageHeader>
       </ThemeWrapper>
+      <ThemePicker />
+
       <ThemesTabs />
     </div>
   );
