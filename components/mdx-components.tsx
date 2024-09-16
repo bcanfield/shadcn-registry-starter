@@ -23,10 +23,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/ui/accordion";
-import { Alert, AlertDescription, AlertTitle } from "@/registry/ui/alert";
-import { AspectRatio } from "@/registry/ui/aspect-ratio";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/ui/tabs";
+} from "@/components/ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Style } from "@/registry/registry-styles";
 import { siteConfig } from "@/config/site";
 import { ThemeWrapper } from "./theme-wrapper";

@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/ui/table";
+} from "@/components/ui/table";
 
 const invoices = [
   {

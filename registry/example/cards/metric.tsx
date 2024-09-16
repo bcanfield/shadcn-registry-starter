@@ -8,8 +8,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/ui/card";
-import { baseColors } from "@/registry/registry-base-colors";
+} from "@/components/ui/card";
+// import { baseColors } from "@/registry/registry-base-colors";
 
 const data = [
   {
@@ -46,9 +46,9 @@ export function CardsMetric() {
   const { theme: mode } = useTheme();
   const [config] = useConfig();
 
-  const baseColor = baseColors.find(
-    (baseColor) => baseColor.name === config.theme
-  );
+  // const baseColor = baseColors.find(
+  //   (baseColor) => baseColor.name === config.theme
+  // );
 
   return (
     <Card>
@@ -112,10 +112,10 @@ export function CardsMetric() {
                   {
                     stroke: "var(--theme-primary)",
                     opacity: 0.25,
-                    "--theme-primary": `hsl(${
-                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                        .primary
-                    })`,
+                    // "--theme-primary": `hsl(${
+                    //   baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                    //     .primary
+                    // })`,
                   } as React.CSSProperties
                 }
               />
@@ -130,10 +130,10 @@ export function CardsMetric() {
                 style={
                   {
                     stroke: "var(--theme-primary)",
-                    "--theme-primary": `hsl(${
-                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                        .primary
-                    })`,
+                    // "--theme-primary": `hsl(${
+                    //   baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                    //     .primary
+                    // })`,
                   } as React.CSSProperties
                 }
               />

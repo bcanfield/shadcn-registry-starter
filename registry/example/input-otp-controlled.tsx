@@ -2,7 +2,11 @@
 
 import * as React from "react";
 
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/registry/ui/input-otp";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 export default function InputOTPControlled() {
   const [value, setValue] = React.useState("");

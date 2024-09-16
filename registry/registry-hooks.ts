@@ -1,3 +1,5 @@
+// https://github.com/shadcn-ui/ui/blob/main/apps/www/registry/registry-hooks.ts
+
 import { Registry } from "@/registry/schema";
 
 export const hooks: Registry = [

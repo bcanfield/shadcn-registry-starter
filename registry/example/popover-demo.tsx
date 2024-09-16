@@ -1,7 +1,11 @@
-import { Button } from "@/registry/ui/button";
-import { Input } from "@/registry/ui/input";
-import { Label } from "@/registry/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export default function PopoverDemo() {
   return (

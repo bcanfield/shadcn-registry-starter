@@ -1,16 +1,16 @@
-import "@/styles/globals.css"
-import { Metadata, Viewport } from "next"
+import "@/styles/globals.css";
+import { Metadata, Viewport } from "next";
 
-import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
-import { Analytics } from "@/components/analytics"
-import { ThemeProvider } from "@/components/providers"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeSwitcher } from "@/components/theme-switcher"
-import { Toaster as DefaultToaster } from "@/registry/ui/toaster"
-// import { Toaster as NewYorkSonner } from "@/registry/ui/sonner"
-// import { Toaster as NewYorkToaster } from "@/registry/ui/toaster"
+import { siteConfig } from "@/config/site";
+import { fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+import { Analytics } from "@/components/analytics";
+import { ThemeProvider } from "@/components/providers";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { ThemeSwitcher } from "@/components/theme-switcher";
+import { Toaster as DefaultToaster } from "@/components/ui/toaster";
+// import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
+// import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -61,17 +61,17 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
-}
+};
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-}
+};
 
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -106,5 +106,5 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </body>
       </html>
     </>
-  )
+  );
 }

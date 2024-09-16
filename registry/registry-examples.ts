@@ -1,6 +1,14 @@
+// https://github.com/shadcn-ui/ui/blob/main/apps/www/registry/registry-examples.ts
+
 import { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
+  {
+    name: "multi-select-demo",
+    type: "registry:example",
+    registryDependencies: ["multi-select"],
+    files: ["example/multi-select-demo.tsx"],
+  },
   {
     name: "accordion-demo",
     type: "registry:example",

@@ -7,13 +7,13 @@ import { NpmCommands } from "types/unist";
 
 import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
-import { Button, ButtonProps } from "@/registry/ui/button";
+import { Button, ButtonProps } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 interface CopyButtonProps extends ButtonProps {
   value: string;

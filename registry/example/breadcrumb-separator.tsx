@@ -7,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/ui/breadcrumb";
+} from "@/components/ui/breadcrumb";
 
 export default function BreadcrumbWithCustomSeparator() {
   return (

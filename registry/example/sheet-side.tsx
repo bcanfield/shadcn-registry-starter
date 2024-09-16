@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/registry/ui/button";
-import { Input } from "@/registry/ui/input";
-import { Label } from "@/registry/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Sheet,
   SheetClose,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/ui/sheet";
+} from "@/components/ui/sheet";
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const;
 

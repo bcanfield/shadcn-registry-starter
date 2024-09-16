@@ -1,5 +1,3 @@
-import { blocks } from "@/registry/registry-blocks";
-import { charts } from "@/registry/registry-charts";
 import { examples } from "@/registry/registry-examples";
 import { hooks } from "@/registry/registry-hooks";
 import { lib } from "@/registry/registry-lib";
@@ -10,8 +8,6 @@ import { Registry } from "@/registry/schema";
 export const registry: Registry = [
   ...ui,
   ...examples,
-  // ...blocks,
-  // ...charts,
   ...lib,
   ...hooks,
   ...themes,

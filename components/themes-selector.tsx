@@ -7,8 +7,8 @@ import { THEMES } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useThemesConfig } from "@/hooks/use-themes-config";
-import { Skeleton } from "@/registry/ui/skeleton";
-import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Theme, useConfig } from "@/hooks/use-config";
 import "@/styles/mdx.css";
 
@@ -19,11 +19,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/ui/dialog";
-import { Button } from "@/registry/ui/button";
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { ThemeWrapper } from "./theme-wrapper";
 import { copyToClipboardWithMeta } from "./copy-button";
-import { BaseColor } from "@/registry/registry-base-colors";
 import template from "lodash.template";
 import { CheckIcon, CopyIcon } from "lucide-react";
 
