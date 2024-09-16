@@ -23,6 +23,8 @@ export default function MultiSelectDemo() {
       options={frameworksList}
       onValueChange={setSelectedFrameworks}
       defaultValue={selectedFrameworks}
+      placeholder="Select frameworks"
+      variant="secondary"
     />
   );
 }

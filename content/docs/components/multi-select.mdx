@@ -7,11 +7,15 @@ component: true
 
 <ComponentPreview name="multi-select-demo" description="A Multi Select" />
 
+## About
+
+Inspired by the component from [sersavan](https://github.com/sersavan/shadcn-multi-select-component).
+
 ## Installation
 
-The Date Picker is built using the `<Combobox />` component.
+The Multi Select is built using a composition of the `<Popover />` and the `<Command />` components.
 
-See installation instructions for the [Combobox](https://ui.shadcn.com/docs/components/combobox).
+See installation instructions for the [Popover](https://ui.shadcn.com/docs/components/popover). and the [Command](https://ui.shadcn.com/docs/components/command) components.
 
 <Tabs defaultValue="cli">
 
@@ -29,12 +33,6 @@ See installation instructions for the [Combobox](https://ui.shadcn.com/docs/comp
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install @radix-ui/react-slot
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="multi-select" />
@@ -49,3 +47,59 @@ npm install @radix-ui/react-slot
 
 ## Usage
 
+```tsx
+"use client";
+
+import { MultiSelect } from "@/registry/ui/multi-select";
+import { Cat, Dog, Fish, Rabbit, Turtle } from "lucide-react";
+import { useState } from "react";
+
+const frameworksList = [
+  { value: "react", label: "React", icon: Turtle },
+  { value: "angular", label: "Angular", icon: Cat },
+  { value: "vue", label: "Vue", icon: Dog },
+  { value: "svelte", label: "Svelte", icon: Rabbit },
+  { value: "ember", label: "Ember", icon: Fish },
+];
+
+export default function MultiSelectDemo() {
+  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([
+    "react",
+    "angular",
+  ]);
+
+  return (
+    <MultiSelect
+      options={frameworksList}
+      onValueChange={setSelectedFrameworks}
+      defaultValue={selectedFrameworks}
+      placeholder="Select frameworks"
+      variant="inverted"
+      animation={2}
+      maxCount={3}
+    />
+  );
+}
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="multi-select-demo" description="A default multi-select" />
+
+### Secondary
+
+<ComponentPreview name="multi-select-secondary" description="A secondary multi-select" />
+
+### Inverted
+
+<ComponentPreview name="multi-select-inverted" description="An inverted multi-select" />
+
+### Destructive
+
+<ComponentPreview name="multi-select-destructive" description="A destructive multi-select" />
+
+### Form
+
+<ComponentPreview name="multi-select-form" description="A destructive multi-select" />
