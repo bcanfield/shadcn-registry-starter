@@ -99,7 +99,6 @@ export function ThemesSwitcher({
             : theme.cssVars?.light;
         if (!cssVars) return null;
 
-        console.log({ themeName: theme.name, css: cssVars });
         return (
           <ToggleGroupItem
             value={theme.name}
@@ -262,7 +261,6 @@ function getThemeCode(theme: Theme, radius: number) {
   if (!theme) {
     return "";
   }
-  console.log({ brandin: theme.cssVars });
 
   return template(BASE_STYLES_WITH_VARIABLES)({
     colors: theme.cssVars,

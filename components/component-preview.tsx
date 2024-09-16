@@ -32,11 +32,7 @@ export function ComponentPreview({
   hideCode = false,
   ...props
 }: ComponentPreviewProps) {
-  // const [config] = useConfig()
-  // const index = styles.findIndex((style) => style.name === config.style)
-
   const Codes = React.Children.toArray(children) as React.ReactElement[];
-  console.log({ Codes });
   const Code = Codes[0];
 
   const Preview = React.useMemo(() => {

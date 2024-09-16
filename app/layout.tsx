@@ -8,9 +8,8 @@ import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { Toaster as DefaultToaster } from "@/components/ui/toaster";
-// import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
-// import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
+import { Toaster as Sonner } from "sonner";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
@@ -99,9 +98,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <TailwindIndicator />
             <ThemeSwitcher />
             <Analytics />
-            {/* <NewYorkToaster /> */}
-            <DefaultToaster />
-            {/* <NewYorkSonner /> */}
+            <Toaster />
+            <Sonner />
           </ThemeProvider>
         </body>
       </html>
