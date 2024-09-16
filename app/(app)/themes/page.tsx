@@ -8,7 +8,7 @@ import {
 import { ThemeWrapper } from "@/components/theme-wrapper";
 import { ThemesTabs } from "./tabs";
 import { themes } from "@/registry/registry-themes";
-import ThemePicker from "@/components/theme-picker";
+import { ThemesSwitcher } from "@/components/themes-selector";
 
 export const metadata: Metadata = {
   title: "Themes",
@@ -34,8 +34,10 @@ export default function ThemesPage() {
           </PageHeaderDescription>
         </PageHeader>
       </ThemeWrapper>
-      <ThemePicker />
-
+      <ThemesSwitcher
+        themes={themes}
+        className="  flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 "
+      />
       <ThemesTabs />
     </div>
   );

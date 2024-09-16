@@ -71,17 +71,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
-    "utils": {
-      name: "utils",
-      type: "registry:lib",
-      registryDependencies: undefined,
-      files: ["registry/lib/utils.ts"],
-      component: React.lazy(() => import("@/registry/lib/utils.ts")),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: []
-    },
     "use-mobile": {
       name: "use-mobile",
       type: "registry:hook",
