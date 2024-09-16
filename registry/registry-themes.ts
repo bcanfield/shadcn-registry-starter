@@ -1,3 +1,4 @@
+// https://github.com/shadcn-ui/ui/blob/main/apps/www/registry/registry-themes.ts
 import { Registry } from "./schema";
 
 export const themes: Registry = [

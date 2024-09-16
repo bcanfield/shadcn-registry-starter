@@ -48,6 +48,11 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Multi Select",
+          href: "/docs/components/multi-select",
+          items: [],
+        },
+        {
           title: "Accordion",
           href: "/docs/components/accordion",
           items: [],

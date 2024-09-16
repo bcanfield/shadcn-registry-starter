@@ -8,13 +8,17 @@ import { cn } from "@/lib/utils";
 import { useLiftMode } from "@/hooks/use-lift-mode";
 import { BlockCopyButton } from "@/components/block-copy-button";
 // import { StyleSwitcher } from "@/components/style-switcher"
-import { Badge } from "@/registry/ui/badge";
-import { Label } from "@/registry/ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui/popover";
-import { Separator } from "@/registry/ui/separator";
-import { Switch } from "@/registry/ui/switch";
-import { TabsList, TabsTrigger } from "@/registry/ui/tabs";
-import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import { TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Block } from "@/registry/schema";
 
 export function BlockToolbar({

@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ImperativePanelHandle } from "react-resizable-panels"
+import * as React from "react";
+import { ImperativePanelHandle } from "react-resizable-panels";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 // import { useConfig } from "@/hooks/use-config"
-import { useLiftMode } from "@/hooks/use-lift-mode"
-import { BlockToolbar } from "@/components/block-toolbar"
-import { Icons } from "@/components/icons"
+import { useLiftMode } from "@/hooks/use-lift-mode";
+import { BlockToolbar } from "@/components/block-toolbar";
+import { Icons } from "@/components/icons";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/ui/resizable"
-import { Tabs, TabsContent } from "@/registry/ui/tabs"
-import { Block } from "@/registry/schema"
+} from "@/components/ui/resizable";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Block } from "@/registry/schema";
 
 export function BlockPreview({
   block,
 }: {
-  block: Block & { hasLiftMode: boolean }
+  block: Block & { hasLiftMode: boolean };
 }) {
   // const [config] = useConfig()
-  const { isLiftMode } = useLiftMode(block.name)
-  const [isLoading, setIsLoading] = React.useState(true)
-  const ref = React.useRef<ImperativePanelHandle>(null)
+  const { isLiftMode } = useLiftMode(block.name);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const ref = React.useRef<ImperativePanelHandle>(null);
 
   // if (config.style !== block.style) {
   //   return null
@@ -67,7 +67,7 @@ export function BlockPreview({
               height={block.container?.height ?? 450}
               className="chunk-mode relative z-20 w-full bg-background"
               onLoad={() => {
-                setIsLoading(false)
+                setIsLoading(false);
               }}
               allowTransparency
             />
@@ -89,5 +89,5 @@ export function BlockPreview({
         />
       </TabsContent>
     </Tabs>
-  )
+  );
 }

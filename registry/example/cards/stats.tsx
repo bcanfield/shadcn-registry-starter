@@ -2,8 +2,8 @@ import { useTheme } from "next-themes";
 import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts";
 
 import { useConfig } from "@/hooks/use-config";
-import { Card, CardContent, CardHeader, CardTitle } from "@/registry/ui/card";
-import { baseColors } from "@/registry/registry-base-colors";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// import { baseColors } from "@/registry/registry-base-colors";
 
 const data = [
   {
@@ -44,9 +44,9 @@ export function CardsStats() {
   const { theme: mode } = useTheme();
   const [config] = useConfig();
 
-  const baseColor = baseColors.find(
-    (baseColor) => baseColor.name === config.theme
-  );
+  // const baseColor = baseColors.find(
+  //   (baseColor) => baseColor.name === config.theme
+  // );
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
@@ -81,10 +81,10 @@ export function CardsStats() {
                   style={
                     {
                       stroke: "var(--theme-primary)",
-                      "--theme-primary": `hsl(${
-                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                          .primary
-                      })`,
+                      // "--theme-primary": `hsl(${
+                      //   baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                      //     .primary
+                      // })`,
                     } as React.CSSProperties
                   }
                 />
@@ -111,10 +111,10 @@ export function CardsStats() {
                     {
                       fill: "var(--theme-primary)",
                       opacity: 1,
-                      "--theme-primary": `hsl(${
-                        baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                          .primary
-                      })`,
+                      // "--theme-primary": `hsl(${
+                      //   baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                      //     .primary
+                      // })`,
                     } as React.CSSProperties
                   }
                 />

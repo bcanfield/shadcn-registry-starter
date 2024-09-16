@@ -1,52 +1,52 @@
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
-import AccordionDemo from "@/registry/example/accordion-demo"
-import AlertDialogDemo from "@/registry/example/alert-dialog-demo"
-import AspectRatioDemo from "@/registry/example/aspect-ratio-demo"
-import AvatarDemo from "@/registry/example/avatar-demo"
-import BadgeDemo from "@/registry/example/badge-demo"
-import BadgeDestructive from "@/registry/example/badge-destructive"
-import BadgeOutline from "@/registry/example/badge-outline"
-import BadgeSecondary from "@/registry/example/badge-secondary"
-import ButtonDemo from "@/registry/example/button-demo"
-import ButtonDestructive from "@/registry/example/button-destructive"
-import ButtonGhost from "@/registry/example/button-ghost"
-import ButtonLink from "@/registry/example/button-link"
-import ButtonLoading from "@/registry/example/button-loading"
-import ButtonOutline from "@/registry/example/button-outline"
-import ButtonSecondary from "@/registry/example/button-secondary"
-import ButtonWithIcon from "@/registry/example/button-with-icon"
-import CardDemo from "@/registry/example/card-demo"
-import CheckboxDemo from "@/registry/example/checkbox-demo"
-import CollapsibleDemo from "@/registry/example/collapsible-demo"
-import CommandDemo from "@/registry/example/command-demo"
-import ContextMenuDemo from "@/registry/example/context-menu-demo"
-import DatePickerDemo from "@/registry/example/date-picker-demo"
-import DialogDemo from "@/registry/example/dialog-demo"
-import DropdownMenuDemo from "@/registry/example/dropdown-menu-demo"
-import HoverCardDemo from "@/registry/example/hover-card-demo"
-import MenubarDemo from "@/registry/example/menubar-demo"
-import NavigationMenuDemo from "@/registry/example/navigation-menu-demo"
-import PopoverDemo from "@/registry/example/popover-demo"
-import ProgressDemo from "@/registry/example/progress-demo"
-import RadioGroupDemo from "@/registry/example/radio-group-demo"
-import ScrollAreaDemo from "@/registry/example/scroll-area-demo"
-import SelectDemo from "@/registry/example/select-demo"
-import SeparatorDemo from "@/registry/example/separator-demo"
-import SheetDemo from "@/registry/example/sheet-demo"
-import SkeletonDemo from "@/registry/example/skeleton-demo"
-import SliderDemo from "@/registry/example/slider-demo"
-import SwitchDemo from "@/registry/example/switch-demo"
-import TabsDemo from "@/registry/example/tabs-demo"
-import ToastDemo from "@/registry/example/toast-demo"
-import ToggleDemo from "@/registry/example/toggle-demo"
-import ToggleDisabled from "@/registry/example/toggle-disabled"
-import ToggleOutline from "@/registry/example/toggle-outline"
-import ToggleWithText from "@/registry/example/toggle-with-text"
-import TooltipDemo from "@/registry/example/tooltip-demo"
-import { Button } from "@/registry/ui/button"
+import { cn } from "@/lib/utils";
+import AccordionDemo from "@/registry/example/accordion-demo";
+import AlertDialogDemo from "@/registry/example/alert-dialog-demo";
+import AspectRatioDemo from "@/registry/example/aspect-ratio-demo";
+import AvatarDemo from "@/registry/example/avatar-demo";
+import BadgeDemo from "@/registry/example/badge-demo";
+import BadgeDestructive from "@/registry/example/badge-destructive";
+import BadgeOutline from "@/registry/example/badge-outline";
+import BadgeSecondary from "@/registry/example/badge-secondary";
+import ButtonDemo from "@/registry/example/button-demo";
+import ButtonDestructive from "@/registry/example/button-destructive";
+import ButtonGhost from "@/registry/example/button-ghost";
+import ButtonLink from "@/registry/example/button-link";
+import ButtonLoading from "@/registry/example/button-loading";
+import ButtonOutline from "@/registry/example/button-outline";
+import ButtonSecondary from "@/registry/example/button-secondary";
+import ButtonWithIcon from "@/registry/example/button-with-icon";
+import CardDemo from "@/registry/example/card-demo";
+import CheckboxDemo from "@/registry/example/checkbox-demo";
+import CollapsibleDemo from "@/registry/example/collapsible-demo";
+import CommandDemo from "@/registry/example/command-demo";
+import ContextMenuDemo from "@/registry/example/context-menu-demo";
+import DatePickerDemo from "@/registry/example/date-picker-demo";
+import DialogDemo from "@/registry/example/dialog-demo";
+import DropdownMenuDemo from "@/registry/example/dropdown-menu-demo";
+import HoverCardDemo from "@/registry/example/hover-card-demo";
+import MenubarDemo from "@/registry/example/menubar-demo";
+import NavigationMenuDemo from "@/registry/example/navigation-menu-demo";
+import PopoverDemo from "@/registry/example/popover-demo";
+import ProgressDemo from "@/registry/example/progress-demo";
+import RadioGroupDemo from "@/registry/example/radio-group-demo";
+import ScrollAreaDemo from "@/registry/example/scroll-area-demo";
+import SelectDemo from "@/registry/example/select-demo";
+import SeparatorDemo from "@/registry/example/separator-demo";
+import SheetDemo from "@/registry/example/sheet-demo";
+import SkeletonDemo from "@/registry/example/skeleton-demo";
+import SliderDemo from "@/registry/example/slider-demo";
+import SwitchDemo from "@/registry/example/switch-demo";
+import TabsDemo from "@/registry/example/tabs-demo";
+import ToastDemo from "@/registry/example/toast-demo";
+import ToggleDemo from "@/registry/example/toggle-demo";
+import ToggleDisabled from "@/registry/example/toggle-disabled";
+import ToggleOutline from "@/registry/example/toggle-outline";
+import ToggleWithText from "@/registry/example/toggle-with-text";
+import TooltipDemo from "@/registry/example/tooltip-demo";
+import { Button } from "@/components/ui/button";
 
 export default function KitchenSinkPage() {
   return (
@@ -186,7 +186,7 @@ export default function KitchenSinkPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function ComponentWrapper({
@@ -202,5 +202,5 @@ function ComponentWrapper({
     >
       {children}
     </div>
-  )
+  );
 }

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { themes } from "@/registry/registry-themes";
-import { Button } from "@/registry/ui/button";
+import { Button } from "@/components/ui/button";
 import { CssVars, Theme, useConfig } from "@/hooks/use-config";
 import { CustomThemeWrapper } from "./custom-theme-wrapper";
 import { useMemo } from "react";

@@ -13,7 +13,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/registry/ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
 import { siteConfig } from "@/config/site";
 
 const components: { title: string; href: string; description: string }[] = [
