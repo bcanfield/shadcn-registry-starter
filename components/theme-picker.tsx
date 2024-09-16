@@ -11,10 +11,7 @@ import { ThemeWrapper } from "./theme-wrapper";
 
 export default function ThemePicker() {
   const { setTheme: setMode, resolvedTheme: mode } = useTheme();
-  console.log({ themes, mode });
   const [config, setConfig] = useConfig();
-
-  const typedThemes = themes as Theme[];
 
   const getStyle = (
     key: keyof CssVars["light"],
@@ -33,7 +30,7 @@ export default function ThemePicker() {
   //   const cardColor = useMemo(() => theme.cssVars?.light.card, [typedThemes])
   return (
     <ThemesSwitcher
-      themes={typedThemes}
+      themes={themes}
       className="  flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 "
     />
   );
