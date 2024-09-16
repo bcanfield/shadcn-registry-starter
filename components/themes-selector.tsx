@@ -1,17 +1,15 @@
 "use client";
 
-import * as React from "react";
 import { useTheme } from "next-themes";
+import * as React from "react";
 
-import { THEMES } from "@/lib/themes";
-import { cn } from "@/lib/utils";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import { useThemesConfig } from "@/hooks/use-themes-config";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Theme, useConfig } from "@/hooks/use-config";
+import { cn } from "@/lib/utils";
 import "@/styles/mdx.css";
 
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -20,11 +18,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ThemeWrapper } from "./theme-wrapper";
-import { copyToClipboardWithMeta } from "./copy-button";
 import template from "lodash.template";
 import { CheckIcon, CopyIcon } from "lucide-react";
+import { copyToClipboardWithMeta } from "./copy-button";
+import { ThemeWrapper } from "./theme-wrapper";
 
 export function ThemesSwitcher({
   themes = [],
@@ -32,9 +29,6 @@ export function ThemesSwitcher({
 }: React.ComponentProps<"div"> & { themes?: Theme[] }) {
   const { theme: mode } = useTheme();
   const [mounted, setMounted] = React.useState(false);
-  const { themesConfig, setThemesConfig } = useThemesConfig();
-  // const theme = themesConfig.theme;
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [config, setConfig] = useConfig();
   const [hasCopied, setHasCopied] = React.useState(false);
 
