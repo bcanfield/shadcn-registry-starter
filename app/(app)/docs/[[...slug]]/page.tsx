@@ -138,7 +138,6 @@ export default async function DocPage({ params }: DocPageProps) {
         <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] pt-4">
           <ScrollArea className="h-full pb-10">
             {doc.toc && <DashboardTableOfContents toc={toc} />}
-            {/* <OpenInV0Cta className="mt-6 max-w-[80%]" /> */}
           </ScrollArea>
         </div>
       </div>
