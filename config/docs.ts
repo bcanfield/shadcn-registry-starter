@@ -1,4 +1,5 @@
 import { MainNavItem, SidebarNavItem } from "types/nav"
+import { DEFAULT_COMPONENT } from "./default-component.mjs"
 
 export interface DocsConfig {
   mainNav: MainNavItem[]
@@ -14,7 +15,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Components",
-      href: "/docs/components/accordion",
+      href: `/docs/components/${DEFAULT_COMPONENT}`,
     },
 
     
