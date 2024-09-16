@@ -3,14 +3,13 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 
-import { THEMES, Theme } from "@/lib/themes";
+import { THEMES } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useThemesConfig } from "@/hooks/use-themes-config";
 import { Skeleton } from "@/registry/ui/skeleton";
 import { ToggleGroup, ToggleGroupItem } from "@/registry/ui/toggle-group";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/ui/tooltip";
-import { useConfig } from "@/hooks/use-config";
+import { Theme, useConfig } from "@/hooks/use-config";
 import "@/styles/mdx.css";
 
 import {
@@ -29,13 +28,13 @@ import template from "lodash.template";
 import { CheckIcon, CopyIcon } from "lucide-react";
 
 export function ThemesSwitcher({
-  themes = THEMES,
+  themes = [],
   className,
 }: React.ComponentProps<"div"> & { themes?: Theme[] }) {
   const { theme: mode } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   const { themesConfig, setThemesConfig } = useThemesConfig();
-  const theme = themesConfig.theme;
+  // const theme = themesConfig.theme;
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [config, setConfig] = useConfig();
   const [hasCopied, setHasCopied] = React.useState(false);
@@ -59,7 +58,7 @@ export function ThemesSwitcher({
       >
         {themes.map((theme) => (
           <div
-            key={theme.id}
+            key={theme.name}
             className="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-transparent"
           >
             <Skeleton className="h-6 w-6 rounded-sm" />
@@ -72,7 +71,7 @@ export function ThemesSwitcher({
   return (
     <ToggleGroup
       type="single"
-      value={theme?.name}
+      value={config.theme}
       onValueChange={(value) => {
         const theme = themes.find((theme) => theme.name === value);
         if (!theme) {
@@ -86,7 +85,7 @@ export function ThemesSwitcher({
           style: "default",
         }));
 
-        setThemesConfig({ ...themesConfig, theme: theme });
+        // setThemesConfig({ ...themesConfig, theme: theme });
       }}
       className={cn(
         "flex items-center justify-center  py-4 flex-col lg:justify-start gap-4  w-full",
@@ -96,7 +95,10 @@ export function ThemesSwitcher({
       {themes.map((theme) => {
         const isDarkTheme = ["Midnight"].includes(theme.name);
         const cssVars =
-          mounted && mode === "dark" ? theme.cssVars.dark : theme.cssVars.light;
+          mounted && mode === "dark"
+            ? theme.cssVars?.dark
+            : theme.cssVars?.light;
+        if (!cssVars) return null;
 
         console.log({ themeName: theme.name, css: cssVars });
         return (
@@ -137,7 +139,12 @@ export function ThemesSwitcher({
 function CustomizerCode({ theme }: { theme: Theme }) {
   const [config] = useConfig();
   // const theme = baseColors.find((theme) => theme.name === config.theme)
-
+  const cssVars = theme.cssVars;
+  const lightVars = cssVars?.light;
+  const darkVars = cssVars?.dark;
+  if (!cssVars || !lightVars || !darkVars) {
+    return;
+  }
   return (
     <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
       <div data-rehype-pretty-code-fragment="">
@@ -147,11 +154,11 @@ function CustomizerCode({ theme }: { theme: Theme }) {
             <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
             {/* <span className="line text-white">
               &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {theme?.cssVars.light["background"]};
+              {lightVars["background"]};
             </span>
             <span className="line text-white">
               &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {theme?.cssVars.light["foreground"]};
+              {lightVars["foreground"]};
             </span> */}
             {[
               "card",
@@ -165,33 +172,22 @@ function CustomizerCode({ theme }: { theme: Theme }) {
               <>
                 <span className="line text-white">
                   &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    theme?.cssVars.light[
-                      prefix as keyof typeof theme.cssVars.light
-                    ]
-                  }
-                  ;
+                  {lightVars[prefix as keyof typeof lightVars]};
                 </span>
                 <span className="line text-white">
                   &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    theme?.cssVars.light[
-                      `${prefix}-foreground` as keyof typeof theme.cssVars.light
-                    ]
-                  }
-                  ;
+                  {lightVars[`${prefix}-foreground` as keyof typeof lightVars]};
                 </span>
               </>
             ))}
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border: {theme?.cssVars.light["border"]}
-              ;
+              &nbsp;&nbsp;&nbsp;&nbsp;--border: {lightVars["border"]};
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input: {theme?.cssVars.light["input"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--input: {lightVars["input"]};
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring: {theme?.cssVars.light["ring"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--ring: {lightVars["ring"]};
             </span>
             <span className="line text-white">
               &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
@@ -201,12 +197,7 @@ function CustomizerCode({ theme }: { theme: Theme }) {
                 <>
                   <span className="line text-white">
                     &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                    {
-                      theme?.cssVars.light[
-                        prefix as keyof typeof theme.cssVars.light
-                      ]
-                    }
-                    ;
+                    {lightVars[prefix as keyof typeof lightVars]};
                   </span>
                 </>
               )
@@ -215,12 +206,10 @@ function CustomizerCode({ theme }: { theme: Theme }) {
             <span className="line text-white">&nbsp;</span>
             <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {theme?.cssVars.dark["background"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--background: {darkVars["background"]};
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {theme?.cssVars.dark["foreground"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--foreground: {darkVars["foreground"]};
             </span>
             {[
               "card",
@@ -234,44 +223,29 @@ function CustomizerCode({ theme }: { theme: Theme }) {
               <>
                 <span className="line text-white">
                   &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    theme?.cssVars.dark[
-                      prefix as keyof typeof theme.cssVars.dark
-                    ]
-                  }
-                  ;
+                  {darkVars[prefix as keyof typeof darkVars]};
                 </span>
                 <span className="line text-white">
                   &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    theme?.cssVars.dark[
-                      `${prefix}-foreground` as keyof typeof theme.cssVars.dark
-                    ]
-                  }
-                  ;
+                  {darkVars[`${prefix}-foreground` as keyof typeof darkVars]};
                 </span>
               </>
             ))}
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border: {theme?.cssVars.dark["border"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--border: {darkVars["border"]};
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input: {theme?.cssVars.dark["input"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--input: {darkVars["input"]};
             </span>
             <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring: {theme?.cssVars.dark["ring"]};
+              &nbsp;&nbsp;&nbsp;&nbsp;--ring: {darkVars["ring"]};
             </span>
             {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
               (prefix) => (
                 <>
                   <span className="line text-white">
                     &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                    {
-                      theme?.cssVars.dark[
-                        prefix as keyof typeof theme.cssVars.dark
-                      ]
-                    }
-                    ;
+                    {darkVars[prefix as keyof typeof darkVars]};
                   </span>
                 </>
               )
@@ -285,7 +259,7 @@ function CustomizerCode({ theme }: { theme: Theme }) {
   );
 }
 
-function getThemeCode(theme: BaseColor, radius: number) {
+function getThemeCode(theme: Theme, radius: number) {
   if (!theme) {
     return "";
   }
