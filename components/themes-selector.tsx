@@ -8,6 +8,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Theme, useConfig } from "@/hooks/use-config";
 import { cn } from "@/lib/utils";
 import "@/styles/mdx.css";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,8 +21,11 @@ import {
 } from "@/components/ui/dialog";
 import template from "lodash.template";
 import { CheckIcon, CopyIcon } from "lucide-react";
-import { copyToClipboardWithMeta } from "./copy-button";
+import { CopyButton, copyToClipboardWithMeta } from "./copy-button";
 import { ThemeWrapper } from "./theme-wrapper";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import RegistryAdd from "./registry-add";
+import { ComponentSource } from "./component-source";
 
 export function ThemesSwitcher({
   themes = [],
@@ -61,76 +65,136 @@ export function ThemesSwitcher({
     );
   }
 
+  const activeTheme = themes.find((theme) => theme.name === config.theme);
+
   return (
-    <ToggleGroup
-      type="single"
-      value={config.theme}
-      onValueChange={(value) => {
-        const theme = themes.find((theme) => theme.name === value);
-        if (!theme) {
-          return;
-        }
+    <div className="flex flex-col gap-4">
+      <ToggleGroup
+        type="single"
+        value={config.theme}
+        onValueChange={(value) => {
+          const theme = themes.find((theme) => theme.name === value);
+          if (!theme) {
+            return;
+          }
 
-        setConfig((config) => ({
-          ...config,
-          theme: theme.name as any,
-          cssVars: theme.cssVars as any,
-          style: "default",
-        }));
+          setConfig((config) => ({
+            ...config,
+            theme: theme.name as any,
+            cssVars: theme.cssVars as any,
+            style: "default",
+          }));
+        }}
+        className={cn(
+          "flex items-center justify-start gap-4  w-full",
+          className
+        )}
+      >
+        {themes.map((theme) => {
+          const isActive = config.theme === theme.name;
+          const cssVars =
+            mounted && mode === "dark"
+              ? theme.cssVars?.dark
+              : theme.cssVars?.light;
+          if (!cssVars) return null;
 
-        // setThemesConfig({ ...themesConfig, theme: theme });
-      }}
-      className={cn(
-        "flex items-center justify-center  py-4 flex-col lg:justify-start gap-4  w-full",
-        className
-      )}
-    >
-      {themes.map((theme) => {
-        const isDarkTheme = ["Midnight"].includes(theme.name);
-        const cssVars =
-          mounted && mode === "dark"
-            ? theme.cssVars?.dark
-            : theme.cssVars?.light;
-        if (!cssVars) return null;
-
-        return (
-          <ToggleGroupItem
-            value={theme.name}
+          return (
+            <Tooltip key={theme.name}>
+              <TooltipTrigger asChild>
+                <ToggleGroupItem
+                  value={theme.name}
+                  className={cn(
+                    "group flex  shrink-0 items-center justify-center rounded-lg border-2 border-transparent p-2 hover:bg-transparent focus-visible:bg-transparent aria-checked:border-border",
+                    mounted && mode !== "dark" ? "invert-[1]" : ""
+                  )}
+                  style={
+                    {
+                      "--color-1": `hsl(${cssVars["primary"]})`,
+                      "--color-2": `hsl(${cssVars["secondary"]})`,
+                      "--color-3": `hsl(${cssVars["card"]})`,
+                      "--color-4": `hsl(${cssVars["accent"]})`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <div className="flex flex-row w-full h-full">
+                    <div className="h-6 w-6 overflow-hidden rounded-sm">
+                      <div
+                        className={cn(
+                          "grid h-12 w-12 -translate-x-1/4 -translate-y-1/4 grid-cols-2 overflow-hidden rounded-md transition-all ease-in-out group-hover:rotate-45",
+                          isActive
+                            ? "rotate-45 group-hover:rotate-0"
+                            : "rotate-0"
+                        )}
+                      >
+                        <span className="flex h-6 w-6 bg-[--color-1]" />
+                        <span className="flex h-6 w-6 bg-[--color-2]" />
+                        <span className="flex h-6 w-6 bg-[--color-3]" />
+                        <span className="flex h-6 w-6 bg-[--color-4]" />
+                        <span className="sr-only">{theme.name}</span>
+                      </div>
+                    </div>
+                  </div>
+                </ToggleGroupItem>
+              </TooltipTrigger>
+              <TooltipContent side={"top"} className=" capitalize">
+                {formatThemeName(theme.name)}
+              </TooltipContent>
+            </Tooltip>
+          );
+        })}
+      </ToggleGroup>
+      {activeTheme && (
+        <div className="flex flex-col">
+          <h2
             className={cn(
-              "group flex  h-32 w-full shrink-0 items-center justify-center rounded-lg border-2 border-transparent p-2 hover:bg-transparent focus-visible:bg-transparent aria-checked:border-border",
-              mounted && isDarkTheme && mode !== "dark" ? "invert-[1]" : ""
+              "font-heading scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0"
             )}
-            style={
-              {
-                "--color-1": `hsl(${cssVars["primary"]})`,
-                "--color-2": `hsl(${cssVars["secondary"]})`,
-                "--color-3": `hsl(${cssVars["card"]})`,
-                "--color-4": `hsl(${cssVars["accent"]})`,
-              } as React.CSSProperties
-            }
           >
-            <div className="flex flex-col w-full h-full">
-              <div className="flex justify-between flex-1 pl-1 text-sm font-medium">
-                <h2 className="capitalize">{theme.name}</h2>
-                <CopyCodeButton theme={theme} />
-              </div>
-              <div className="flex flex-row h-full gap-1 p-2  w-full">
-                <div className="w-full flex-1 rounded-md bg-[--color-1] md:rounded-lg" />
-                <div className="w-full flex-1 rounded-md bg-[--color-2] md:rounded-lg" />
-                <div className="w-full flex-1 rounded-md bg-[--color-3] md:rounded-lg" />
-                <div className="w-full flex-1 rounded-md bg-[--color-4] md:rounded-lg" />
-              </div>
-            </div>
-          </ToggleGroupItem>
-        );
-      })}
-    </ToggleGroup>
+            Installation
+          </h2>
+          <Tabs defaultValue="account" className="relative mt-6 w-full">
+            <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
+              <TabsTrigger
+                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+                value="account"
+              >
+                CLI
+              </TabsTrigger>
+              <TabsTrigger
+                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+                value="password"
+              >
+                Manual
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent
+              className="relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold"
+              value="account"
+            >
+              <RegistryAdd componentName={config.theme} />
+            </TabsContent>
+            <TabsContent
+              className="relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold"
+              value="password"
+            >
+              <ComponentSource src="">
+                {/* {getThemeCode(activeTheme, config.radius)} */}
+                <CustomizerCode theme={activeTheme} />
+              </ComponentSource>
+            </TabsContent>
+          </Tabs>
+        </div>
+      )}
+    </div>
   );
+}
+
+function formatThemeName(name: string) {
+  return name.split("-")[1];
 }
 
 function CustomizerCode({ theme }: { theme: Theme }) {
   const [config] = useConfig();
-  // const theme = baseColors.find((theme) => theme.name === config.theme)
   const cssVars = theme.cssVars;
   const lightVars = cssVars?.light;
   const darkVars = cssVars?.dark;
@@ -144,14 +208,6 @@ function CustomizerCode({ theme }: { theme: Theme }) {
           <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
             <span className="line text-white">@layer base &#123;</span>
             <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
-            {/* <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {lightVars["background"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {lightVars["foreground"]};
-            </span> */}
             {[
               "card",
               "popover",
@@ -245,6 +301,10 @@ function CustomizerCode({ theme }: { theme: Theme }) {
             <span className="line text-white">&nbsp;&nbsp;&#125;</span>
             <span className="line text-white">&#125;</span>
           </code>
+          <CopyButton
+            value={getThemeCode(theme, config.radius)}
+            className={"absolute right-4 top-4"}
+          />
         </pre>
       </div>
     </ThemeWrapper>

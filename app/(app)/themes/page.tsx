@@ -24,13 +24,10 @@ export default function ThemesPage() {
       >
         <PageHeader className="w-full">
           <PageHeaderHeading className="hidden md:block">
-            Add colors. Make it yours.
-          </PageHeaderHeading>
-          <PageHeaderHeading className="md:hidden">
-            Make it yours
+            Themes
           </PageHeaderHeading>
           <PageHeaderDescription>
-            Hand-picked themes that you can copy and paste into your apps.
+            Hand-crafted themes that you can copy and paste into your apps.
           </PageHeaderDescription>
         </PageHeader>
       </ThemeWrapper>
@@ -38,7 +35,9 @@ export default function ThemesPage() {
         themes={themes}
         className="  flex bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 "
       />
-      <ThemesTabs />
+      <div className="mt-6">
+        <ThemesTabs />
+      </div>
     </div>
   );
 }
