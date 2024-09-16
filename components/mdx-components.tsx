@@ -44,7 +44,7 @@ const components = {
     componentName,
     ...props
   }: React.HTMLAttributes<HTMLElement> & { componentName: string }) => {
-    const copyToRegistryCode = `npx shadcn@latest add ${siteConfig.url}/r/${componentName}`;
+    const copyToRegistryCode = `npx shadcn@latest add ${siteConfig.url}/r/${componentName}.json`;
     return (
       <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
         <div data-rehype-pretty-code-fragment="">
