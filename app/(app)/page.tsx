@@ -13,10 +13,9 @@ export default function IndexPage() {
   return (
     <div className="container relative">
       <PageHeader>
-        <PageHeaderHeading>Build your component library</PageHeaderHeading>
+        <PageHeaderHeading>Shadcn Registry Starter</PageHeaderHeading>
         <PageHeaderDescription>
-          Beautifully designed components that you can copy and paste into your
-          apps.
+          Template for creating a custom shadcn component registry
         </PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
