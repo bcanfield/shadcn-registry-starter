@@ -1,13 +1,13 @@
-import Link from "next/link"
+import Link from "next/link";
 
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "@/components/page-header"
-import { siteConfig } from "@/config/site"
-import { Button } from "@/registry/ui/button"
+} from "@/components/page-header";
+import { siteConfig } from "@/config/site";
+import { Button } from "@/components/ui/button";
 
 export default function IndexPage() {
   return (
@@ -33,7 +33,6 @@ export default function IndexPage() {
           </Button>
         </PageActions>
       </PageHeader>
-   
     </div>
-  )
+  );
 }

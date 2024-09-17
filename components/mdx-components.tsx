@@ -1,42 +1,36 @@
 // @ts-nocheck
-"use client"
+"use client";
 
-import * as React from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { useMDXComponent } from "next-contentlayer2/hooks"
-import { NpmCommands } from "types/unist"
+import * as React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useMDXComponent } from "next-contentlayer2/hooks";
+import { NpmCommands } from "types/unist";
 
-import { Event } from "@/lib/events"
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { Callout } from "@/components/callout"
-import { CodeBlockWrapper } from "@/components/code-block-wrapper"
-import { ComponentExample } from "@/components/component-example"
-import { ComponentPreview } from "@/components/component-preview"
-import { ComponentSource } from "@/components/component-source"
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
-import { FrameworkDocs } from "@/components/framework-docs"
+import { Event } from "@/lib/events";
+import { cn } from "@/lib/utils";
+import { useConfig } from "@/hooks/use-config";
+import { Callout } from "@/components/callout";
+import { CodeBlockWrapper } from "@/components/code-block-wrapper";
+import { ComponentExample } from "@/components/component-example";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button";
+import { FrameworkDocs } from "@/components/framework-docs";
 // import { StyleWrapper } from "@/components/style-wrapper"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/ui/accordion"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/ui/alert"
-import { AspectRatio } from "@/registry/ui/aspect-ratio"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/ui/tabs"
-import { Style } from "@/registry/registry-styles"
+} from "@/components/ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Style } from "@/registry/registry-styles";
+import { siteConfig } from "@/config/site";
+import { ThemeWrapper } from "./theme-wrapper";
+import RegistryAdd from "./registry-add";
 
 const components = {
   Accordion,
@@ -46,6 +40,7 @@ const components = {
   Alert,
   AlertTitle,
   AlertDescription,
+  RegistryAdd,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -180,11 +175,11 @@ const components = {
     __style__,
     ...props
   }: React.HTMLAttributes<HTMLPreElement> & {
-    __style__?: Style["name"]
-    __rawString__?: string
-    __withMeta__?: boolean
-    __src__?: string
-    __event__?: Event["name"]
+    __style__?: Style["name"];
+    __rawString__?: string;
+    __withMeta__?: boolean;
+    __src__?: string;
+    __event__?: Event["name"];
   } & NpmCommands) => {
     return (
       <>
@@ -218,7 +213,7 @@ const components = {
             />
           )}
       </>
-    )
+    );
   },
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
@@ -313,21 +308,21 @@ const components = {
       {...props}
     />
   ),
-}
+};
 
 interface MdxProps {
-  code: string
+  code: string;
 }
 
 export function Mdx({ code }: MdxProps) {
-  const [config] = useConfig()
+  const [config] = useConfig();
   const Component = useMDXComponent(code, {
     style: config.style,
-  })
+  });
 
   return (
     <div className="mdx">
       <Component components={components} />
     </div>
-  )
+  );
 }

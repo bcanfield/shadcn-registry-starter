@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";
 
 import { useConfig } from "@/hooks/use-config";
-import { Button } from "@/registry/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -14,8 +14,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/ui/card";
-import { baseColors } from "@/registry/registry-base-colors";
+} from "@/components/ui/card";
+// import { baseColors } from "@/registry/registry-base-colors";
 
 const data = [
   {
@@ -63,9 +63,9 @@ export function CardsActivityGoal() {
   const { theme: mode } = useTheme();
   const [config] = useConfig();
 
-  const baseColor = baseColors.find(
-    (baseColor) => baseColor.name === config.theme
-  );
+  // const baseColor = baseColors.find(
+  //   (baseColor) => baseColor.name === config.theme
+  // );
   const [goal, setGoal] = React.useState(350);
 
   function onClick(adjustment: number) {
@@ -116,10 +116,10 @@ export function CardsActivityGoal() {
                   {
                     fill: "var(--theme-primary)",
                     opacity: 0.2,
-                    "--theme-primary": `hsl(${
-                      baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
-                        .primary
-                    })`,
+                    // "--theme-primary": `hsl(${
+                    //   baseColor?.cssVars[mode === "dark" ? "dark" : "light"]
+                    //     .primary
+                    // })`,
                   } as React.CSSProperties
                 }
               />

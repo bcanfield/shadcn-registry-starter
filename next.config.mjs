@@ -1,4 +1,6 @@
 import { createContentlayerPlugin } from "next-contentlayer2"
+import { DEFAULT_COMPONENT } from "./config/default-component.mjs"
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -20,12 +22,12 @@ const nextConfig = {
     return [
       {
         source: "/components",
-        destination: "/docs/components/accordion",
+        destination: `/docs/components/${DEFAULT_COMPONENT}`,
         permanent: true,
       },
       {
         source: "/docs/components",
-        destination: "/docs/components/accordion",
+        destination: `/docs/components/${DEFAULT_COMPONENT}`,
         permanent: true,
       },
       {
