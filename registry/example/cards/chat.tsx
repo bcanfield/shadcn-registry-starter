@@ -2,9 +2,14 @@ import * as React from "react";
 import { Check, Plus, Send } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/ui/avatar";
-import { Button } from "@/registry/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/registry/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import {
   Command,
   CommandEmpty,
@@ -12,7 +17,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/ui/command";
+} from "@/components/ui/command";
 import {
   Dialog,
   DialogContent,
@@ -20,14 +25,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/registry/ui/dialog";
-import { Input } from "@/registry/ui/input";
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/ui/tooltip";
+} from "@/components/ui/tooltip";
 
 const users = [
   {

@@ -1,7 +1,6 @@
 import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
 
-import { BaseColor } from "@/registry/registry-base-colors"
 import { themes } from "@/registry/registry-themes";
 
 export type Theme = (typeof themes)[number];
@@ -55,7 +54,7 @@ export type CssVars = {
 
 type Config = {
   // style: Style["name"]
-  theme: BaseColor["name"]
+  theme: Theme['name']
   radius: number
   cssVars: {
     light: Partial<CssVars["light"]>;

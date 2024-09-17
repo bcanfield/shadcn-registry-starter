@@ -1,21 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/ui/tabs"
+import { cn } from "@/lib/utils";
+import { CopyButton, CopyWithClassNames } from "@/components/copy-button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
-  extractClassname?: boolean
-  extractedClassNames?: string
-  align?: "center" | "start" | "end"
-  src?: string
+  extractClassname?: boolean;
+  extractedClassNames?: string;
+  align?: "center" | "start" | "end";
+  src?: string;
 }
 
 export function ComponentExample({
@@ -29,7 +24,7 @@ export function ComponentExample({
 }: ComponentExampleProps) {
   const [Example, Code, ...Children] = React.Children.toArray(
     children
-  ) as React.ReactElement[]
+  ) as React.ReactElement[];
 
   const codeString = React.useMemo(() => {
     if (
@@ -37,10 +32,10 @@ export function ComponentExample({
     ) {
       const [, Button] = React.Children.toArray(
         Code.props.children
-      ) as React.ReactElement[]
-      return Button?.props?.value || Button?.props?.__rawString__ || null
+      ) as React.ReactElement[];
+      return Button?.props?.value || Button?.props?.__rawString__ || null;
     }
-  }, [Code])
+  }, [Code]);
 
   return (
     <div
@@ -103,5 +98,5 @@ export function ComponentExample({
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }

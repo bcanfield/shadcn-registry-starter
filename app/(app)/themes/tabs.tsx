@@ -1,21 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { useConfig } from "@/hooks/use-config"
-import { ThemeWrapper } from "@/components/theme-wrapper"
-import { Skeleton } from "@/registry/ui/skeleton"
-import CardsDemo from "@/registry/example/cards"
-import { CustomThemeWrapper } from "@/components/custom-theme-wrapper"
-
+import { useConfig } from "@/hooks/use-config";
+import { ThemeWrapper } from "@/components/theme-wrapper";
+import { Skeleton } from "@/components/ui/skeleton";
+import CardsDemo from "@/registry/example/cards";
+import { CustomThemeWrapper } from "@/components/custom-theme-wrapper";
 
 export function ThemesTabs() {
-  const [mounted, setMounted] = React.useState(false)
-  const [config] = useConfig()
+  const [mounted, setMounted] = React.useState(false);
+  const [config] = useConfig();
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <div className="space-y-8">
@@ -69,5 +68,5 @@ export function ThemesTabs() {
         </CustomThemeWrapper>
       )}
     </div>
-  )
+  );
 }
