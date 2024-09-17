@@ -1,33 +1,44 @@
 
-# ShadCN Component Registry & Documentation Template
+# Shadcn Registry Starter
 
-Welcome to the **ShadCN Component Registry & Documentation Template**! This repository serves as a **template for building a ShadCN component registry**, allowing individuals and organizations to easily **share and display custom components, themes, utilities, and hooks**. It also functions as a **documentation site** to guide users through installation and usage.
+Welcome to the **Shadcn Registry Starter**! This repository serves as a **template for building a Shadcn component registry**, allowing individuals and organizations to easily **share and display custom components, themes, utilities, and hooks**. It also functions as a **documentation site** to guide users through installation and usage.
 
-> Note: This repository is forked from the official [shadcn ui](https://github.com/shadcn-ui/ui). Many modifications have been made, primarily to strip it down to only provide the registry and documentation portions. If you're looking for the full ShadCN UI functionality, please refer to the [original repo](https://github.com/shadcn-ui/ui).
+> Note: This repository is forked from the official [shadcn ui](https://github.com/shadcn-ui/ui). Many modifications have been made, primarily to strip it down to only provide the registry and documentation portions. If you're looking for the full Shadcn UI functionality, please refer to the [original repo](https://github.com/shadcn-ui/ui).
 
 ## Key Features
 
-- **Component Registry**: Define and publish your custom ShadCN components, themes, examples, and hooks.
+- **Component Registry**: Define and publish your custom Shadcn components, themes, examples, and hooks.
 - **Documentation Site**: Provides an organized structure for documentation using MDX files.
-- **Integration with ShadCN CLI**: Easily install components into developer environments.
+- **Integration with Shadcn CLI**: Easily install components into developer environments.
 
 ---
 
 ## Table of Contents
 
-1. [Registry Overview](#registry-overview)
-2. [Registry File Structure](#registry-file-structure)
-3. [Building the Registry](#building-the-registry)
-4. [Documentation Overview](#documentation-overview)
-5. [Getting Started](#getting-started)
-6. [Contributing](#contributing)
-7. [License](#license)
+- [Shadcn Registry Starter](#shadcn-registry-starter)
+  - [Key Features](#key-features)
+  - [Table of Contents](#table-of-contents)
+  - [Registry Overview](#registry-overview)
+  - [Registry File Structure](#registry-file-structure)
+    - [File Descriptions:](#file-descriptions)
+  - [Building the Registry](#building-the-registry)
+  - [Documentation Overview](#documentation-overview)
+    - [File Structure:](#file-structure)
+    - [Documentation Build](#documentation-build)
+  - [Getting Started](#getting-started)
+    - [1. Clone the Repo:](#1-clone-the-repo)
+    - [2. Install Dependencies:](#2-install-dependencies)
+    - [3. Build the Registry:](#3-build-the-registry)
+    - [4. Build the Documentation:](#4-build-the-documentation)
+    - [5. Start the Development Server:](#5-start-the-development-server)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ---
 
 ## Registry Overview
 
-The **ShadCN Component Registry** allows users to download custom components, themes, examples, and hooks using the **ShadCN CLI**. Each registry item is defined by its name, type, dependencies, and the files that make up the registry item.
+The **Shadcn Component Registry** allows users to download custom components, themes, examples, and hooks using the **Shadcn CLI**. Each registry item is defined by its name, type, dependencies, and the files that make up the registry item.
 
 - **Types of Items**: 
   - Examples
@@ -64,7 +75,7 @@ Each file defines an array of objects representing the individual registry items
 - `name`: The item name, used for downloading.
 - `type`: The type of the item (example, theme, hook, etc.).
 - `dependencies`: NPM packages that the item depends on.
-- `registryDependencies`: ShadCN components required from the official ShadCN registry.
+- `registryDependencies`: Shadcn components required from the official Shadcn registry.
 - `files`: Code files that make up this registry item.
 
 The additional subfolders (e.g., `examples`, `hooks`, `ui`) are simply to organize the code files for each of these registry item types.
@@ -79,9 +90,9 @@ To build the registry, use the following command:
 npm run build:registry
 ```
 
-This command runs the `build-registry.mts` script, which processes the registry files (`registry-examples.ts`, `registry-ui.ts`, etc.), transforming each entry into a JSON file according to the **ShadCN registry schema**. These JSON files are placed in the `public/r/` directory.
+This command runs the `build-registry.mts` script, which processes the registry files (`registry-examples.ts`, `registry-ui.ts`, etc.), transforming each entry into a JSON file according to the **Shadcn registry schema**. These JSON files are placed in the `public/r/` directory.
 
-The **public registry** files in `public/r/` are then accessible by the ShadCN CLI for users to install the components.
+The **public registry** files in `public/r/` are then accessible by the Shadcn CLI for users to install the components.
 
 > Note: A `__registry__ ` directory is also generated that exports the `Index` object, which is simply a record of the registry's components. This imported into a couple places to look up a registry component by name, to then grab the relevant files, dependencies, etc.
 
