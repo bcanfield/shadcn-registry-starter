@@ -34,7 +34,7 @@ export function CustomThemeWrapper({
 
   const style = {
     ...prefixedCssVars,
-    "--radius": `${defaultTheme ? "0.5" : config.cssVars.light.radius}rem`,
+    "--radius": `${defaultTheme ? "0.5" : config.cssVars.light?.radius}rem`,
   } as React.CSSProperties;
 
   return (
