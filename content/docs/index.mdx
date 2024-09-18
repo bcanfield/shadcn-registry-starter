@@ -1,67 +1,142 @@
 ---
 title: Introduction
-description: Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
+description: Build a registry of custom components, themes, utilities, and hooks with a simple setup and documentation.
 ---
 
-This is **NOT** a component library. It's a collection of re-usable components that you can copy and paste into your apps.
+[Use this Template](https://github.com/new?template_name=shadcn-registry-starter&template_owner=bcanfield)
 
-**What do you mean by not a component library?**
 
-I mean you do not install it as a dependency. It is not available or distributed via npm.
+[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fbcanfield%2Fshadcn-registry-starter&showOptionalTeamCreation=false)
 
-Pick the components you need. Copy and paste the code into your project and customize to your needs. The code is yours.
 
-_Use this as a reference to build your own component libraries._
+Welcome to the **Shadcn Registry Starter**! This repository serves as a template for building a ShadCN component registry, allowing individuals and organizations to easily share and display custom components, themes, utilities, and hooks. It also functions as a documentation site to guide users through installation and usage.
 
-## FAQ
+> **Note:** This repository is **forked from the official [ShadCN UI](https://github.com/shadcn/ui)**. Many modifications have been made, primarily to strip it down to only provide the **registry** and **documentation** portions.
 
-<Accordion type="multiple">
+## Key Features
 
-<AccordionItem value="faq-1">
-	<AccordionTrigger>
-		Why copy/paste and not packaged as a dependency?
-	</AccordionTrigger>
-	<AccordionContent>
-The idea behind this is to give you ownership and control over the code, allowing you to decide how the components are built and styled.
+- **Component Registry**: Define and publish your custom ShadCN components, themes, examples, and hooks.
+- **Documentation Site**: Provides an organized structure for documentation using MDX files.
+- **Integration with ShadCN CLI**: Easily install components into developer environments.
 
-Start with some sensible defaults, then customize the components to your needs.
+---
 
-One of the drawbacks of packaging the components in an npm package is that the style is coupled with the implementation. _The design of your components should be separate from their implementation._
+## Getting Started
 
-</AccordionContent>
-</AccordionItem>
+Follow the steps below to get started with this project:
 
-<AccordionItem value="faq-2">
-  <AccordionTrigger>
-    Do you plan to publish it as an npm package?
-  </AccordionTrigger>
-  <AccordionContent>
-    No. I have no plans to publish it as an npm package.
-  </AccordionContent>
-</AccordionItem>
+<Tabs defaultValue="clone">
+  <TabsList>
+    <TabsTrigger value="clone">Clone the Repo</TabsTrigger>
+    <TabsTrigger value="setup">Set Up the Project</TabsTrigger>
+  </TabsList>
 
-<AccordionItem value="faq-3">
-<AccordionTrigger>
-Which frameworks are supported?
-</AccordionTrigger>
-<AccordionContent>
+  <TabsContent value="clone">
+    <Steps>
+      <Step>[Clone this repo](https://github.com/new?template_name=shadcn-registry-starter&template_owner=bcanfield)</Step>
+    </Steps>
+  </TabsContent>
 
-You can use any framework that supports React. [Next.js](https://ui.shadcn.com/docs/installation/next), [Astro](https://ui.shadcn.com/docs/installation/astro), [Remix](https://ui.shadcn.com/docs/installation/remix), [Gatsby](https://ui.shadcn.com/docs/installation/gatsby) etc.
+  <TabsContent value="setup">
+    <Steps>
+      <Step>Install dependencies:</Step>
+      <pre><code>npm install</code></pre>
 
-</AccordionContent>
-</AccordionItem>
+      <Step>Build the registry:</Step>
+      <pre><code>npm run build:registry</code></pre>
 
-<AccordionItem value="faq-4">
-	<AccordionTrigger>
-	Can I use this in my project?
-	</AccordionTrigger>
-	<AccordionContent>
-Yes. Free to use for personal and commercial projects. No attribution required.
+      <Step>Build the documentation:</Step>
+      <pre><code>npm run build:docs</code></pre>
 
-But hey, let me know if you do. I'd love to see what you build.
+      <Step>Start the development server:</Step>
+      <pre><code>npm run dev</code></pre>
+    </Steps>
+  </TabsContent>
+</Tabs>
 
-    </AccordionContent>
+---
 
-</AccordionItem>
 
-</Accordion>
+## Registry Overview
+
+The **ShadCN Component Registry** allows users to download custom components, themes, examples, and hooks using the **ShadCN CLI**. Each registry item is defined by its name, type, dependencies, and the files that make up the registry item.
+
+<Tabs defaultValue="item-types">
+  <TabsList>
+    <TabsTrigger value="item-types">Item Types</TabsTrigger>
+    <TabsTrigger value="file-structure">File Structure</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="item-types">
+    - **Examples**: Pre-built code snippets.
+    - **UI Components**: Ready-to-use user interface elements.
+    - **Themes**: Custom styling themes.
+    - **Hooks**: Useful React hooks for your project.
+  </TabsContent>
+
+  <TabsContent value="file-structure">
+    <Steps>
+      <Step>
+        The `registry` folder contains the following files:
+      </Step>
+      <Step>
+        <pre><code>
+        registry/
+        ├── registry-examples.ts
+        ├── registry-hooks.ts
+        ├── registry-themes.ts
+        ├── registry-ui.ts
+        └── (subfolders for code: examples, hooks, ui, etc.)
+        </code></pre>
+      </Step>
+      <Step>Each file defines arrays representing individual registry items. The structure for each object includes:</Step>
+      <ul>
+        <li><strong>name</strong>: The item name used for downloading.</li>
+        <li><strong>type</strong>: The type of item (example, theme, hook, etc.).</li>
+        <li><strong>dependencies</strong>: NPM packages that the item depends on.</li>
+        <li><strong>registryDependencies</strong>: ShadCN components required from the official ShadCN registry.</li>
+        <li><strong>files</strong>: The code files that make up this registry item.</li>
+      </ul>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+---
+
+## Building the Registry
+
+Use the following steps to build the registry.
+
+<Steps>
+  <Step>Run the build command:</Step>
+  <pre><code>npm run build:registry</code></pre>
+  
+  <Step>
+    This script will process the registry files (`registry-examples.ts`, `registry-hooks.ts`, etc.), transforming each entry into a JSON file that meets the ShadCN registry schema. These JSON files are placed into the `public/r/` directory.
+  </Step>
+</Steps>
+
+---
+
+## Documentation Overview
+
+All documentation is written in **MDX** and located in the `content/docs/` folder. To build the documentation:
+
+<Steps>
+  <Step>Run the build command for docs:</Step>
+  <pre><code>npm run build:docs</code></pre>
+
+  <Step>
+    The `build:docs` command processes MDX files using Contentlayer, generating type-safe output that can be dynamically served via the documentation site.
+  </Step>
+</Steps>
+
+---
+
+## License
+
+This repository is licensed under the MIT License.
+
+---
+
+**Happy coding!**
