@@ -178,7 +178,6 @@ export function ThemesSwitcher({
               value="password"
             >
               <ComponentSource src="">
-                {/* {getThemeCode(activeTheme, config.radius)} */}
                 <CustomizerCode theme={activeTheme} />
               </ComponentSource>
             </TabsContent>
@@ -198,7 +197,7 @@ function CustomizerCode({ theme }: { theme: Theme }) {
   const cssVars = theme.cssVars;
   const lightVars = cssVars?.light;
   const darkVars = cssVars?.dark;
-  if (!cssVars || !lightVars || !darkVars) {
+  if (!cssVars || !lightVars || !darkVars || !config.radius) {
     return;
   }
   return (
