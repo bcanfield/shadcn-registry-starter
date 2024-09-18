@@ -129,7 +129,7 @@ export function CardsChat() {
                   "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
                   message.role === "user"
                     ? "ml-auto bg-primary text-primary-foreground"
-                    : "bg-muted"
+                    : "bg-muted",
                 )}
               >
                 {message.content}
@@ -190,15 +190,15 @@ export function CardsChat() {
                       if (selectedUsers.includes(user)) {
                         return setSelectedUsers(
                           selectedUsers.filter(
-                            (selectedUser) => selectedUser !== user
-                          )
+                            (selectedUser) => selectedUser !== user,
+                          ),
                         );
                       }
 
                       return setSelectedUsers(
                         [...users].filter((u) =>
-                          [...selectedUsers, user].includes(u)
-                        )
+                          [...selectedUsers, user].includes(u),
+                        ),
                       );
                     }}
                   >
