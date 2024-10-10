@@ -62,7 +62,7 @@
     "eslint": "^8.41.0",
     "eslint-config-next": "13.3.0",
     "eslint-config-turbo": "^1.9.9",
-    "eslint-plugin-tailwindcss": "3.13.1",
+    "eslint-plugin-tailwindcss": "3.17.5",
     "framer-motion": "^11.0.24",
     "geist": "^1.2.2",
     "input-otp": "^1.2.2",
